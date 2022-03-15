@@ -4,35 +4,29 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     public float speed = 10f;
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //Movement
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) {
-            transform.position += Vector3.up * speed * Time.deltaTime;
+            transform.position += Vector3.up * speed * Time.fixedDeltaTime;
         }
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
-            transform.position += Vector3.down * speed * Time.deltaTime;
+            transform.position += Vector3.down * speed * Time.fixedDeltaTime;
         }
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
-            transform.position += Vector3.left * speed * Time.deltaTime;
+            transform.position += Vector3.left * speed * Time.fixedDeltaTime;
         }
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
-            transform.position += Vector3.right * speed * Time.deltaTime;
+            transform.position += Vector3.right * speed * Time.fixedDeltaTime;
         }
-
-
-
     }
 }
