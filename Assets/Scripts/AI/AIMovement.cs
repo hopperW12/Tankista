@@ -6,39 +6,58 @@ using UnityEngine;
 public class AIMovement : MonoBehaviour
 {
     public float speed = 5f;
-
+    public float rotationSpeed = 45f;
     public List<Vector2> points;
     
     private int _nextPosition;
+    private ActionStatus status;
+
+
     void Start()
     {
+        //Default start
+        _nextPosition++;
+        Vector2 nextPosition = points[_nextPosition];
+
         transform.position = new Vector3(points[0].x, points[0].y, transform.position.z);
+        Vector3 direction = new Vector3(nextPosition.x, nextPosition.y, transform.position.z) - transform.position;
+        transform.up = direction;
+        status = ActionStatus.MOVE;
     }
 
     void Update()
     {
-        float step = Time.deltaTime * speed;
-        Vector2 nextPosition = points[_nextPosition];
+        //Movement & Rotation    
+        Vector2 nextPosition = points[_nextPosition];    
 
-        Vector3 direction = new Vector3(nextPosition.x, nextPosition.y, transform.position.z) - transform.position;
-        transform.up = direction;
-        
-        
-        transform.position = new Vector3(Vector2.MoveTowards(transform.position, nextPosition, step).x,
-            Vector2.MoveTowards(transform.position, nextPosition, step).y, transform.position.z);
+        switch(status) {
+            case ActionStatus.MOVE:
+                float step = Time.deltaTime * speed;
+                transform.position = new Vector3(Vector2.MoveTowards(transform.position, nextPosition, step).x,
+                Vector2.MoveTowards(transform.position, nextPosition, step).y, transform.position.z);
 
-        if (Vector2.Distance(transform.position, nextPosition) < 0.001f)
-            NextPoint();
+                if (Vector2.Distance(transform.position, nextPosition) < 0.001f) {
+                     _nextPosition++;
+                    if (_nextPosition == points.Count)
+                        _nextPosition = 0;
+
+                    status = ActionStatus.ROTATION;
+                }
+                break;
+            case ActionStatus.ROTATION:
+                Vector3 direction = new Vector3(nextPosition.x, nextPosition.y, transform.position.z) - transform.position;
+                Quaternion requiredRotation = Quaternion.LookRotation(Vector3.forward, new Vector3(nextPosition.x, nextPosition.y, transform.position.z) - transform.position);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, requiredRotation, rotationSpeed * Time.deltaTime);
+
+                if (requiredRotation == transform.rotation)
+                    status = ActionStatus.MOVE;
+                break;
         }
-
-    void NextPoint()
-    {
-        _nextPosition++;
-        
-        if (_nextPosition == points.Count)
-            _nextPosition = 0;
     }
+       
+}
 
-    
-    
+public enum ActionStatus {
+    MOVE,
+    ROTATION
 }
