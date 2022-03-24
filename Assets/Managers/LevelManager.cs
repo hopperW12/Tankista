@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -11,13 +12,13 @@ public class LevelManager : MonoBehaviour
 
     public GameObject levelObj;
 
-    void Update()
+    void Start()
     {
         
     }
 
     public void SpawnLevel()
     {
-        //levelObj = Instantiate(levels.FindIndex(activeLevel));
+        levelObj = Instantiate(levels[activeLevel]);
     }
 }

@@ -45,7 +45,7 @@ public class MenuManager : MonoBehaviour
 
     public void LoadLevel(int levelIndex)
     {
-        SceneManager.LoadScene("Game");
         GameInstance.Instance.LevelManager.activeLevel = levelIndex;
+        SceneManager.LoadScene("Game");
     }
 }

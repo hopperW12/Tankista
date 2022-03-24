@@ -5,10 +5,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 10f;
-    void Start()
-    {
-        
-    }
 
     void FixedUpdate()
     {
