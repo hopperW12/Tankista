@@ -11,10 +11,16 @@ public class AIMovement : MonoBehaviour
     
     private int _nextPosition;
     private ActionStatus status;
+    private bool _activate;
 
 
     void Start()
     {
+        if (points.Count <= 1) {
+            _activate = false;
+            return;
+        }
+
         //Default start
         _nextPosition++;
         Vector2 nextPosition = points[_nextPosition];
@@ -27,6 +33,9 @@ public class AIMovement : MonoBehaviour
 
     void Update()
     {
+        if (!_activate)
+            return;
+
         //Movement & Rotation    
         Vector2 nextPosition = points[_nextPosition];    
 
