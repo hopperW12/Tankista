@@ -15,4 +15,12 @@ public class Tank : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.name == "Player")
+        {
+            Debug.Log("Smrdíš hopre");
+        }
+    }
 }
