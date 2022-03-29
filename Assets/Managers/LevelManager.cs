@@ -20,7 +20,8 @@ public class LevelManager : MonoBehaviour
     public void SpawnLevel()
     {
         levelObj = Instantiate(levels[activeLevel]);
-        GameObject.Find("Player").transform.position = GameObject.Find("SPAWNPOINT").transform.position;
+        //GameObject.Find("Player").transform.position = GameObject.Find("SPAWNPOINT").transform.position;
+        GameObject.Find("Player").transform.position = new Vector3(GameObject.Find("SPAWNPOINT").transform.position.x, GameObject.Find("SPAWNPOINT").transform.position.y, GameObject.Find("Player").transform.position.z);
     }
 
     public void DestroyLevel()
