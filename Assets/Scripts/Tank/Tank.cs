@@ -20,7 +20,7 @@ public class Tank : MonoBehaviour
     {
         if(other.name == "Player")
         {
-            Debug.Log("Smrdíš hopre");
+            
         }
     }
 }

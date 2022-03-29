@@ -12,6 +12,10 @@ public class LevelManager : MonoBehaviour
 
     public GameObject levelObj;
 
+    private GameObject spawnpoint;
+    private GameObject tank;
+    private GameObject player;
+
     void Start()
     {
         
@@ -19,13 +23,27 @@ public class LevelManager : MonoBehaviour
 
     public void SpawnLevel()
     {
+
         levelObj = Instantiate(levels[activeLevel]);
-        //GameObject.Find("Player").transform.position = GameObject.Find("SPAWNPOINT").transform.position;
-        GameObject.Find("Player").transform.position = new Vector3(GameObject.Find("SPAWNPOINT").transform.position.x, GameObject.Find("SPAWNPOINT").transform.position.y, GameObject.Find("Player").transform.position.z);
+
+        spawnpoint = GameObject.Find("SPAWNPOINT");
+        tank = GameObject.Find("Tank");
+        player = GameObject.Find("Player");
+
+        player.transform.position = new Vector3(spawnpoint.transform.position.x, spawnpoint.transform.position.y, player.transform.position.z);
+
+        //Setting compass target on tank
+        player.GetComponentInChildren<Compass>().target = tank;
     }
 
     public void DestroyLevel()
     {
         Destroy(levelObj);
+    }
+
+    public void CompleteLevel()
+    {
+        activeLevel++;
+
     }
 }

@@ -262,6 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enable: 0
+  compassRotationSpeed: 100
   target: {fileID: 0}
   hand: {fileID: 2614015941562600912}
 --- !u!1 &6430260085953330660
