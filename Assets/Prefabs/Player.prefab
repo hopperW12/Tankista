@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66f713978bca3445873138e7f5fd511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enable: 0
+  enable: 1
   compassRotationSpeed: 100
   target: {fileID: 0}
   hand: {fileID: 2614015941562600912}
