@@ -704,6 +704,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 258288344}
+  - component: {fileID: 258288345}
   m_Layer: 0
   m_Name: LevelSelector
   m_TagString: Untagged
@@ -726,6 +727,18 @@ Transform:
   m_Father: {fileID: 93921379}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &258288345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258288343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d2505bd95bf0e4aa4bb3fe09a2bcbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &303758423
 GameObject:
   m_ObjectHideFlags: 0
@@ -2479,6 +2492,22 @@ PrefabInstance:
       propertyPath: playerPrefab
       value: 
       objectReference: {fileID: 7557043330908158761, guid: 23c3b17365c683747a79a47c2ca7ac3e, type: 3}
+    - target: {fileID: 3659363815658370933, guid: 0d45886aa88a8b144af21693b1ab69c8, type: 3}
+      propertyPath: levels.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3659363815658370933, guid: 0d45886aa88a8b144af21693b1ab69c8, type: 3}
+      propertyPath: levels.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2d1d5a5e29e6e884990f7ac0a9f5e16d, type: 2}
+    - target: {fileID: 3659363815658370933, guid: 0d45886aa88a8b144af21693b1ab69c8, type: 3}
+      propertyPath: levels.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 859eb1ff2971602478878b731ea75732, type: 2}
+    - target: {fileID: 3659363815658370933, guid: 0d45886aa88a8b144af21693b1ab69c8, type: 3}
+      propertyPath: levels.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7df633ca023413b43a3046f5ca062c47, type: 2}
     - target: {fileID: 6434960621086027734, guid: 0d45886aa88a8b144af21693b1ab69c8, type: 3}
       propertyPath: m_Name
       value: GameInstance

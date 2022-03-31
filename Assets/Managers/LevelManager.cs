@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour
 
     public int activeLevel;
   
-    public List<GameObject> levels;
+    public List<Level> levels;
 
     public GameObject levelObj;
 
@@ -27,7 +27,7 @@ public class LevelManager : MonoBehaviour
     public void SpawnLevel()
     {
 
-        levelObj = Instantiate(levels[activeLevel]);
+        levelObj = Instantiate(levels[activeLevel].levelPrefab);
 
         spawnpoint = GameObject.Find("SPAWNPOINT");
         tank = GameObject.Find("Tank");
