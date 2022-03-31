@@ -2472,6 +2472,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3659363815658370933, guid: 0d45886aa88a8b144af21693b1ab69c8, type: 3}
+      propertyPath: endLevelUI
+      value: 
+      objectReference: {fileID: 3195100826748951943, guid: 0c948b324f336e74592b167143dda0f9, type: 3}
+    - target: {fileID: 3659363815658370933, guid: 0d45886aa88a8b144af21693b1ab69c8, type: 3}
       propertyPath: playerPrefab
       value: 
       objectReference: {fileID: 7557043330908158761, guid: 23c3b17365c683747a79a47c2ca7ac3e, type: 3}

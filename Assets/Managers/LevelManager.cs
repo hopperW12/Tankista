@@ -16,6 +16,9 @@ public class LevelManager : MonoBehaviour
     private GameObject tank;
     private GameObject player;
 
+    public GameObject endLevelUI;
+    private GameObject endLevelUIobj;
+
     void Start()
     {
         
@@ -43,7 +46,15 @@ public class LevelManager : MonoBehaviour
 
     public void CompleteLevel()
     {
-        activeLevel++;
-
+        endLevelUIobj = Instantiate(endLevelUI);
     }
+
+    public void NextLevel()
+    {
+        activeLevel++;
+        DestroyLevel();
+        SpawnLevel();
+        Destroy(endLevelUIobj);
+    }
+
 }
