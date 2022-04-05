@@ -66,6 +66,8 @@ public class AIMovement : MonoBehaviour
        
 }
 
+
+
 public enum ActionStatus {
     MOVE,
     ROTATION
