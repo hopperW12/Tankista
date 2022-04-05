@@ -10,16 +10,15 @@ public class MenuManager : MonoBehaviour
     private GameObject exitB;
     private GameObject backB;
     private GameObject levelSelector;
+    public GameObject levelSelectorObj;
 
     private void Start()
     {
         playB = GameObject.Find("Play");
         exitB = GameObject.Find("Exit");
         backB = GameObject.Find("Back");
-        levelSelector = GameObject.Find("LevelSelector");
 
         backB.SetActive(false);
-        levelSelector.SetActive(false);
     }
 
     public void CloseGame()
@@ -32,7 +31,7 @@ public class MenuManager : MonoBehaviour
         playB.SetActive(false);
         exitB.SetActive(false);
         backB.SetActive(true);
-        levelSelector.SetActive(true);
+        levelSelector = Instantiate(levelSelectorObj, GameObject.Find("Canvas").transform);
     }
 
     public void BackButton()
@@ -40,7 +39,7 @@ public class MenuManager : MonoBehaviour
         playB.SetActive(true);
         exitB.SetActive(true);
         backB.SetActive(false);
-        levelSelector.SetActive(false);
+        Destroy(levelSelector);
     }
 
     public void LoadLevel(int levelIndex)
