@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
 {
+    public float fov = 90f;
+
+    private Mesh mesh;
+    private Vector3 origin;
+    private float startingAngle;
     void Start()
     {
-        Mesh mesh = new Mesh();
-        GetComponent<MeshFilter>().mesh = mesh;      
+        mesh = new Mesh();
+        GetComponent<MeshFilter>().mesh = mesh;
+        origin = Vector3.zero;
+        startingAngle = 90;
 
-        float fov = 90f;
-        Vector3 origin = Vector3.zero;
+
+    }
+
+    private void Update() {
+        Vector3 origion = transform.parent.position;
+        Vector3 direction = transform.parent.up;
+
+        setOrigin(origin);
+        setDirection(direction);
+    }
+    void LateUpdate() {
+
         int rayCount = 50;
-        float angle = 90f;
+        float angle = startingAngle;
         float angleIncrease = fov / rayCount;
         float viewDistance = 4f;
 
@@ -45,12 +62,20 @@ public class FieldOfView : MonoBehaviour
         mesh.triangles = triangles;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void setOrigin(Vector3 origin) {
+        this.origin = origin;
     }
 
+    public void setDirection(Vector3 direction) {
+        startingAngle = GetAngleFromVectorFloat(direction) - fov / 2f;
+    }
+
+    public float GetAngleFromVectorFloat(Vector3 dir) {
+        dir = dir.normalized;
+        float n = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        if (n < 0) n += 360;
+        return n;
+    }
     public Vector3 GetVectorFromAngle(float angle) {
         float angleRad = angle * (Mathf.PI / 180f);
         return new Vector3(Mathf.Cos(angleRad), Mathf.Sin(angleRad), 0);

@@ -283,12 +283,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4157997363206455160, guid: 4aacaf5e129f8664b9e64a7b9c04c4be, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157997363206455160, guid: 4aacaf5e129f8664b9e64a7b9c04c4be, type: 3}
+      propertyPath: points.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157997363206455160, guid: 4aacaf5e129f8664b9e64a7b9c04c4be, type: 3}
       propertyPath: points.Array.data[0].x
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4157997363206455160, guid: 4aacaf5e129f8664b9e64a7b9c04c4be, type: 3}
       propertyPath: points.Array.data[0].y
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157997363206455160, guid: 4aacaf5e129f8664b9e64a7b9c04c4be, type: 3}
+      propertyPath: points.Array.data[1].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4157997363206455160, guid: 4aacaf5e129f8664b9e64a7b9c04c4be, type: 3}
+      propertyPath: points.Array.data[1].y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6565445070805857969, guid: 4aacaf5e129f8664b9e64a7b9c04c4be, type: 3}
       propertyPath: m_RootOrder
