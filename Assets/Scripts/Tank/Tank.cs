@@ -20,7 +20,8 @@ public class Tank : MonoBehaviour
     {
         if(other.name == "Player")
         {
-            
+            GameInstance.Instance.Player.canMove = false;
+            GameInstance.Instance.UIManager.SpawnUI(0);
         }
     }
 }
