@@ -16,10 +16,8 @@ public class AIMovement : MonoBehaviour
 
     void Start()
     {
-        if (points.Count <= 1) {
-            _activate = false;
-            return;
-        }
+        if (points.Count > 1) _activate = true;
+        else return;
 
         //Default start
         _nextPosition++;

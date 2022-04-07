@@ -7,26 +7,20 @@ public class FieldOfView : MonoBehaviour
     public float fov = 90f;
 
     private Mesh mesh;
-    private Vector3 origin;
     private float startingAngle;
     void Start()
     {
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
-        origin = Vector3.zero;
         startingAngle = 90;
 
-
     }
 
-    private void Update() {
-        Vector3 origion = transform.parent.position;
-        Vector3 direction = transform.parent.up;
-
-        setOrigin(origin);
-        setDirection(direction);
-    }
     void LateUpdate() {
+        Vector3 origin = transform.parent.transform.position;
+        Vector3 direction = -transform.parent.transform.forward;
+
+        setDirection(direction);
 
         int rayCount = 50;
         float angle = startingAngle;
@@ -42,7 +36,17 @@ public class FieldOfView : MonoBehaviour
         int triangleIndex = 0;
         int vertexIndex = 1;
         for (int i = 0; i <= rayCount; i++) {
-            Vector3 vertex = origin + GetVectorFromAngle(angle) * viewDistance; 
+            Vector3 vertex;
+            RaycastHit2D raycast = Physics2D.Raycast(origin, GetVectorFromAngle(angle), viewDistance);
+            if (raycast.collider == null) 
+                vertex = origin + GetVectorFromAngle(angle) * viewDistance; 
+            else 
+                vertex = raycast.point;
+            
+
+            vertices[vertexIndex] = vertex;
+
+
             vertices[vertexIndex] = vertex;
 
             if (i > 0) {
@@ -60,10 +64,6 @@ public class FieldOfView : MonoBehaviour
         mesh.vertices = vertices;   
         mesh.uv = uv;  
         mesh.triangles = triangles;
-    }
-
-    public void setOrigin(Vector3 origin) {
-        this.origin = origin;
     }
 
     public void setDirection(Vector3 direction) {
