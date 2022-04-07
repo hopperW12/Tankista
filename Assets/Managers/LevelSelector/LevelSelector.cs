@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
+using System;
 
 public class LevelSelector : MonoBehaviour
 {
@@ -16,15 +18,19 @@ public class LevelSelector : MonoBehaviour
             GameObject button = Instantiate(levelButtonObj, gameObject.transform);
             button.GetComponentInChildren<TextMeshProUGUI>().text = level.name;
 
-            void KOKOTINA()
+            void TaskOnClick()
             {
-               // Invoke(GameInstance.Instance.MenuManager.LoadLevel(int.Parse(level.name));
+                GameInstance.Instance.LevelManager.activeLevel = int.Parse(level.name) - 1;
+                SceneManager.LoadScene("Game");
             }
 
-            button.GetComponent<Button>().onClick.AddListener(KOKOTINA);
-            button.GetComponent<Button>().onClick.Invoke();
+            button.GetComponent<Button>().onClick.AddListener(TaskOnClick);
+            //button.GetComponent<Button>().onClick.Invoke();
         }
     }
+
+    
+
 
     // Update is called once per frame
     void Update()
