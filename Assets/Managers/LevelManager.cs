@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -42,11 +43,6 @@ public class LevelManager : MonoBehaviour
     public void DestroyLevel()
     {
         Destroy(levelObj);
-    }
-
-    public void CompleteLevel()
-    {
-        endLevelUIobj = Instantiate(endLevelUI);
     }
 
     public void NextLevel()

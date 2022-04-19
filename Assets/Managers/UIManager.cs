@@ -17,9 +17,10 @@ public class UIManager : MonoBehaviour
         
     }
 
-    public void SpawnUI(int arrayIndex)
+    public GameObject SpawnUI(int arrayIndex, GameObject obj)
     {
         Instantiate(uis[arrayIndex],GameObject.Find("Canvas").transform);
+        return obj;
     }
 
     public void NextLevelButton()
