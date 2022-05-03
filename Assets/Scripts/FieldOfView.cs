@@ -16,10 +16,10 @@ public class FieldOfView : MonoBehaviour
 
     }
 
-    void LateUpdate() {
-        Vector3 origin = transform.parent.transform.position;
-        Vector3 direction = -transform.parent.transform.forward;
+    void Update() {
+        Vector3 origin = new Vector3(0, 0, 0);
 
+        Vector3 direction = -transform.parent.transform.forward;
         setDirection(direction);
 
         int rayCount = 50;
@@ -37,16 +37,16 @@ public class FieldOfView : MonoBehaviour
         int vertexIndex = 1;
         for (int i = 0; i <= rayCount; i++) {
             Vector3 vertex;
+            /*
             RaycastHit2D raycast = Physics2D.Raycast(origin, GetVectorFromAngle(angle), viewDistance);
             if (raycast.collider == null) 
                 vertex = origin + GetVectorFromAngle(angle) * viewDistance; 
             else 
                 vertex = raycast.point;
+            */
+
+            vertex = origin + GetVectorFromAngle(angle) * viewDistance; 
             
-
-            vertices[vertexIndex] = vertex;
-
-
             vertices[vertexIndex] = vertex;
 
             if (i > 0) {
