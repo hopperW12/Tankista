@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
 {
+    public LayerMask ignore;
     public float fov = 90f;
+    public float viewDistance = 4f;
 
     private Mesh mesh;
     private float startingAngle;
@@ -19,13 +22,12 @@ public class FieldOfView : MonoBehaviour
     void Update() {
         Vector3 origin = new Vector3(0, 0, 0);
 
-        Vector3 direction = -transform.parent.transform.forward;
+        Vector3 direction = -transform.parent.transform.up;
         setDirection(direction);
 
         int rayCount = 50;
-        float angle = startingAngle;
+        float angle = startingAngle - 90;
         float angleIncrease = fov / rayCount;
-        float viewDistance = 4f;
 
         Vector3[] vertices = new Vector3[rayCount + 2];
         Vector2[] uv = new Vector2[vertices.Length];
@@ -37,16 +39,14 @@ public class FieldOfView : MonoBehaviour
         int vertexIndex = 1;
         for (int i = 0; i <= rayCount; i++) {
             Vector3 vertex;
-            /*
-            RaycastHit2D raycast = Physics2D.Raycast(origin, GetVectorFromAngle(angle), viewDistance);
-            if (raycast.collider == null) 
-                vertex = origin + GetVectorFromAngle(angle) * viewDistance; 
-            else 
-                vertex = raycast.point;
-            */
-
-            vertex = origin + GetVectorFromAngle(angle) * viewDistance; 
             
+            
+            RaycastHit2D raycast = Physics2D.Raycast(transform.TransformPoint(origin), GetVectorFromAngle(angle), viewDistance, ~ignore);
+            if (raycast.collider == null)
+                vertex = origin + GetVectorFromAngle(angle - startingAngle - 90 - fov / 2) * viewDistance;
+            else
+                vertex = origin + GetVectorFromAngle(angle - startingAngle - 90 - fov / 2) * raycast.distance;
+
             vertices[vertexIndex] = vertex;
 
             if (i > 0) {

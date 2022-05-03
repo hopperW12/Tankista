@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        GameInstance.Instance.Player = GetComponentInChildren<Player>();
+        //GameInstance.Instance.Player = GetComponentInChildren<Player>();
     }
     void FixedUpdate()
     {
