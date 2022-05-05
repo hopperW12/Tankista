@@ -5,11 +5,9 @@ using UnityEngine;
 public class GameInstance : MonoBehaviour
 {
     public static GameInstance Instance { get; private set; }
-
     public Player Player { get; set; }
     public LevelManager LevelManager { get; private set; }
     public MenuManager MenuManager { get; private set; }
-
     public UIManager UIManager { get; private set; }
     private void Awake()
     {

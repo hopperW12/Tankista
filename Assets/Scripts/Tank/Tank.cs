@@ -29,7 +29,6 @@ public class Tank : MonoBehaviour
                 GameInstance.Instance.LevelManager.NextLevel();
                 Destroy(endUI);
             }
-            GameInstance.Instance.Player.canMove = false;
             endUI = Instantiate(GameInstance.Instance.UIManager.uis[0], GameObject.Find("Canvas").transform);
             endUI.GetComponentInChildren<Button>().onClick.AddListener(TaskOnClick);
             
