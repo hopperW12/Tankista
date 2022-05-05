@@ -23,8 +23,8 @@ public class Compass : MonoBehaviour
 
 
         Vector3 handPosition = hand.transform.position;
-        Vector3 target = this.target.transform.position;
- 
+        Vector3 target = GameObject.Find("Tank").transform.position;
+
         Quaternion requiredRotation = Quaternion.LookRotation(Vector3.forward, new Vector3(target.x, target.y, handPosition.z) - handPosition);
         hand.transform.rotation = Quaternion.RotateTowards(hand.transform.rotation, requiredRotation, compassRotationSpeed * Time.deltaTime);
         

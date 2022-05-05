@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Tank : MonoBehaviour
 {
-
     GameObject endUI;
     // Start is called before the first frame update
     void Start()
@@ -28,9 +27,12 @@ public class Tank : MonoBehaviour
             void TaskOnClick()
             {
                 GameInstance.Instance.LevelManager.NextLevel();
+                Destroy(endUI);
             }
-            //TODO: DODELAT NEVIM VOLE JAK ALE
-            GameInstance.Instance.UIManager.SpawnUI(0, endUI).GetComponentInChildren<Button>().onClick.AddListener(TaskOnClick);
+            GameInstance.Instance.Player.canMove = false;
+            endUI = Instantiate(GameInstance.Instance.UIManager.uis[0], GameObject.Find("Canvas").transform);
+            endUI.GetComponentInChildren<Button>().onClick.AddListener(TaskOnClick);
+            
         }
     }
 }
