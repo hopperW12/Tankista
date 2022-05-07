@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using AI;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -34,11 +35,10 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void AITrigger(GameObject gameObject)
+    public void AITrigger(GameObject gameObject, SoldierInfo soldierInfo)
     {
         if (gameObject.name != name) return;
-        
-        Debug.Log("Hrac ma umrit!");
+
         GameInstance.Instance.LevelManager.DestroyLevel();
         GameInstance.Instance.LevelManager.SpawnLevel();
     }

@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AI;
 using UnityEngine;
 
 public class AIMovement : MonoBehaviour
 {
+    public SoldierInfo SoldierInfo;
     public float speed = 5f;
     public float rotationSpeed = 45f;
     public List<Vector2> points;
@@ -18,7 +20,9 @@ public class AIMovement : MonoBehaviour
     {
         if (points.Count > 1) _activate = true;
         else return;
-
+        
+        SoldierInfo = SoldierInfo.GetRandomSoldier();
+        
         //Default start
         _nextPosition++;
         Vector2 nextPosition = points[_nextPosition];

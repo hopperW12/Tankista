@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using AI;
 using UnityEngine;
 using UnityEngine.Events;
 public class FieldOfView : MonoBehaviour
 {
     [System.Serializable]
-    public class AITriggerEvent : UnityEvent<GameObject> {}
+    public class AITriggerEvent : UnityEvent<GameObject,SoldierInfo> {}
     
     public AITriggerEvent AITrigger;
     
@@ -51,7 +52,7 @@ public class FieldOfView : MonoBehaviour
             else
             {
                 var gameObject = raycast.transform.gameObject;
-                AITrigger.Invoke(gameObject);
+                AITrigger.Invoke(gameObject, GetComponentInParent<AIMovement>().SoldierInfo);
                 vertex = origin + GetVectorFromAngle(angle - _startingAngle - 90 - fov / 2) * raycast.distance;
             }
 
