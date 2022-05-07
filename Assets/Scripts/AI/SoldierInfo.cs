@@ -30,7 +30,12 @@ namespace AI
 
         public static SoldierInfo GetRandomSoldier()
         {
-            return new SoldierInfo(){firstName = SoldierDatabase.GetRandomFirstName(), lastName =  SoldierDatabase.GetRandomLastName(), age = new Random().Next(18, 50)};
+            return new SoldierInfo() {
+                firstName = SoldierDatabase.GetRandomFirstName(),
+                lastName =  SoldierDatabase.GetRandomLastName(),
+                age = new Random().Next(18, 50)
+                
+            };
         }
     }
     
