@@ -13,24 +13,22 @@ public class FieldOfView : MonoBehaviour
     public float fov = 90f;
     public float viewDistance = 4f;
 
-    private Mesh mesh;
-    private float startingAngle;
+    private Mesh _mesh;
+    private float _startingAngle;
     void Start()
     {
-        mesh = new Mesh();
-        GetComponent<MeshFilter>().mesh = mesh;
-        startingAngle = 90;
-        
+        _mesh = new Mesh();
+        GetComponent<MeshFilter>().mesh = _mesh;
+        _startingAngle = 90;
     }
 
     void Update() {
         Vector3 origin = new Vector3(0, 0, 0);
-
         Vector3 direction = -transform.parent.transform.up;
         setDirection(direction);
 
         int rayCount = 50;
-        float angle = startingAngle - 90;
+        float angle = _startingAngle - 90;
         float angleIncrease = fov / rayCount;
 
         Vector3[] vertices = new Vector3[rayCount + 2];
@@ -42,19 +40,19 @@ public class FieldOfView : MonoBehaviour
         int triangleIndex = 0;
         int vertexIndex = 1;
         for (int i = 0; i <= rayCount; i++) {
+            if (this == null) return;
+
             Vector3 vertex;
-            
-            
             RaycastHit2D raycast = Physics2D.Raycast(transform.TransformPoint(origin), GetVectorFromAngle(angle), viewDistance, ~ignore);
             if (raycast.collider == null)
             {
-                vertex = origin + GetVectorFromAngle(angle - startingAngle - 90 - fov / 2) * viewDistance;
+                vertex = origin + GetVectorFromAngle(angle - _startingAngle - 90 - fov / 2) * viewDistance;
             }
             else
             {
                 var gameObject = raycast.transform.gameObject;
                 AITrigger.Invoke(gameObject);
-                vertex = origin + GetVectorFromAngle(angle - startingAngle - 90 - fov / 2) * raycast.distance;
+                vertex = origin + GetVectorFromAngle(angle - _startingAngle - 90 - fov / 2) * raycast.distance;
             }
 
             vertices[vertexIndex] = vertex;
@@ -71,13 +69,13 @@ public class FieldOfView : MonoBehaviour
             angle -= angleIncrease;
         }
         
-        mesh.vertices = vertices;   
-        mesh.uv = uv;  
-        mesh.triangles = triangles;
+        _mesh.vertices = vertices;   
+        _mesh.uv = uv;  
+        _mesh.triangles = triangles;
     }
 
     public void setDirection(Vector3 direction) {
-        startingAngle = GetAngleFromVectorFloat(direction) - fov / 2f;
+        _startingAngle = GetAngleFromVectorFloat(direction) - fov / 2f;
     }
 
     public float GetAngleFromVectorFloat(Vector3 dir) {
