@@ -16,20 +16,21 @@ namespace AI
             return lastNames[new Random().Next(0, lastNames.Length)];
         }
     }
+    [Serializable]
     public struct SoldierInfo
     {
 
-        public string FirstName, LastName;
-        public int Age;
+        public string firstName, lastName;
+        public int age;
 
         public override string ToString()
         {
-            return $"{FirstName} {LastName}, {Age}";
+            return $"{firstName} {lastName}, {age}";
         }
 
         public static SoldierInfo GetRandomSoldier()
         {
-            return new SoldierInfo(){FirstName = SoldierDatabase.GetRandomFirstName(), LastName =  SoldierDatabase.GetRandomLastName(), Age = new Random().Next(18, 50)};
+            return new SoldierInfo(){firstName = SoldierDatabase.GetRandomFirstName(), lastName =  SoldierDatabase.GetRandomLastName(), age = new Random().Next(18, 50)};
         }
     }
     

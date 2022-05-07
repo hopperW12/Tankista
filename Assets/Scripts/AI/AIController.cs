@@ -2,13 +2,27 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using AI;
+using Unity.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class AIMovement : MonoBehaviour
 {
-    public SoldierInfo SoldierInfo;
+    [FormerlySerializedAs("SoldierInfo")]
+    [Header("Soldier Info")] 
+    public SoldierInfo soldierInfo;
+ 
+    [Header("Base Settings")]
     public float speed = 5f;
     public float rotationSpeed = 45f;
+
+    [Header("FOV Settings")] 
+    public LayerMask ignoreMask;
+    public float fov = 90;
+    public float viewDistance = 4f;
+    public Material fovMaterial;
+    
+    [Header("Path")]
     public List<Vector2> points;
     
     private int _nextPosition;
@@ -16,12 +30,12 @@ public class AIMovement : MonoBehaviour
     private bool _activate;
 
 
-    void Start()
+    private void Start()
     {
         if (points.Count > 1) _activate = true;
         else return;
         
-        SoldierInfo = SoldierInfo.GetRandomSoldier();
+        soldierInfo = SoldierInfo.GetRandomSoldier();
         
         //Default start
         _nextPosition++;
@@ -31,7 +45,24 @@ public class AIMovement : MonoBehaviour
         Vector3 direction = new Vector3(nextPosition.x, nextPosition.y, transform.position.z) - transform.position;
         transform.up = direction;
         status = ActionStatus.MOVE;
+        
+        //Field Of View
+        GameObject fov = new GameObject("FieldOfView");
+        fov.AddComponent<MeshFilter>();
+        fov.AddComponent<MeshRenderer>();
+        fov.AddComponent<FieldOfView>();
+        
+        fov.GetComponent<MeshRenderer>().material = fovMaterial;
+        
+        FieldOfView fieldOfView = fov.GetComponent<FieldOfView>();
+        fieldOfView.AITrigger.AddListener(GameInstance.Instance.Player.AITrigger);
+        fieldOfView.ignore = ignoreMask;
+        fieldOfView.fov = this.fov;
+        fieldOfView.viewDistance = this.viewDistance;
+        
+        fov.transform.SetParent(transform, false);
     }
+    
 
     void Update()
     {
