@@ -33,4 +33,11 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    public void AITrigger(GameObject gameObject)
+    {
+        if (gameObject.name != name) return;
+        
+        Debug.Log("Hrac ma umrit!");
+    }
 }

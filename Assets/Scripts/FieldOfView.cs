@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class FieldOfView : MonoBehaviour
 {
+    [System.Serializable]
+    public class AITriggerEvent : UnityEvent<GameObject> {}
+    
+    public AITriggerEvent AITrigger;
+    
     public LayerMask ignore;
     public float fov = 90f;
     public float viewDistance = 4f;
@@ -16,7 +20,7 @@ public class FieldOfView : MonoBehaviour
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
         startingAngle = 90;
-
+        
     }
 
     void Update() {
@@ -43,9 +47,15 @@ public class FieldOfView : MonoBehaviour
             
             RaycastHit2D raycast = Physics2D.Raycast(transform.TransformPoint(origin), GetVectorFromAngle(angle), viewDistance, ~ignore);
             if (raycast.collider == null)
+            {
                 vertex = origin + GetVectorFromAngle(angle - startingAngle - 90 - fov / 2) * viewDistance;
+            }
             else
+            {
+                var gameObject = raycast.transform.gameObject;
+                AITrigger.Invoke(gameObject);
                 vertex = origin + GetVectorFromAngle(angle - startingAngle - 90 - fov / 2) * raycast.distance;
+            }
 
             vertices[vertexIndex] = vertex;
 
