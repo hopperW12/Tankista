@@ -39,5 +39,7 @@ public class Player : MonoBehaviour
         if (gameObject.name != name) return;
         
         Debug.Log("Hrac ma umrit!");
+        GameInstance.Instance.LevelManager.DestroyLevel();
+        GameInstance.Instance.LevelManager.SpawnLevel();
     }
 }

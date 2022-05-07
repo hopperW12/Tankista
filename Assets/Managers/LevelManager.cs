@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,11 +15,10 @@ public class LevelManager : MonoBehaviour
 
     public GameObject levelObj;
 
-    private GameObject spawnpoint;
+    public GameObject spawnpoint;
     private GameObject tank;
     private GameObject player;
-
-    public GameObject endLevelUI;
+    
     private GameObject endLevelUIobj;
 
     
@@ -28,8 +28,8 @@ public class LevelManager : MonoBehaviour
 
         levelObj = Instantiate(levels[activeLevel].levelPrefab);
 
+        Debug.Log(GameObject.FindGameObjectsWithTag("Spawnpoint").Length);
         spawnpoint = GameObject.Find("SPAWNPOINT");
-        tank = GameObject.Find("Tank");
         player = GameObject.Find("Player");
         GameInstance.Instance.Player.canMove = true;
 
@@ -38,7 +38,7 @@ public class LevelManager : MonoBehaviour
 
     public void DestroyLevel()
     {
-        Destroy(levelObj);
+        DestroyImmediate(levelObj);
     }
 
     public void NextLevel()
