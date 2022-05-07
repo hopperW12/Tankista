@@ -27,8 +27,7 @@ public class LevelManager : MonoBehaviour
     {
 
         levelObj = Instantiate(levels[activeLevel].levelPrefab);
-
-        Debug.Log(GameObject.FindGameObjectsWithTag("Spawnpoint").Length);
+        
         spawnpoint = GameObject.Find("SPAWNPOINT");
         player = GameObject.Find("Player");
         GameInstance.Instance.Player.canMove = true;

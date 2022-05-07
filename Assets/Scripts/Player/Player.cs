@@ -8,9 +8,6 @@ public class Player : MonoBehaviour
 {
     public float speed = 10f;
     public bool canMove = true;
-
-
-    private GameObject respawnUI;
     private void Awake()
     {
         GameInstance.Instance.Player = GetComponentInChildren<Player>();
@@ -43,7 +40,7 @@ public class Player : MonoBehaviour
         if (gameObject.name != name) return;
 
         GameInstance.Instance.PauseGame();
-        respawnUI = Instantiate(GameInstance.Instance.UIManager.uis[1], GameObject.Find("Canvas").transform);
+        GameInstance.Instance.UIManager.Show("respawn");
 
         GameInstance.Instance.LevelManager.DestroyLevel();
         GameInstance.Instance.LevelManager.SpawnLevel();
@@ -51,7 +48,7 @@ public class Player : MonoBehaviour
 
     public void Respawn()
     {
-        DestroyImmediate(respawnUI);
+        GameInstance.Instance.UIManager.Hide();
         GameInstance.Instance.ResumeGame();
     }
 }

@@ -1,29 +1,36 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
+[Serializable] 
+public class UIInfo
+{
+    public string Name;
+    public GameObject ui;
+}
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] 
+    public UIInfo[] uis;
 
-    public GameObject[] uis;
-    void Start()
+    private GameObject _ui;
+
+    public void Show(string name)
     {
+        UIInfo uiInfo = uis
+            .Where(info => info.Name == name)
+            .FirstOrDefault();
+        if (uiInfo == null)
+            return;
         
+        _ui = Instantiate(uiInfo.ui, GameObject.Find("Canvas").transform);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Hide()
     {
-        
-    }
-
-    public void SpawnUI(int arrayIndex)
-    {
-        
-    }
-
-    public void NextLevelButton()
-    {
-        GameInstance.Instance.Player.canMove = true;
+        if (_ui != null)
+            DestroyImmediate(_ui);
     }
 }

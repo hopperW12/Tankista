@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Tank : MonoBehaviour
 {
-    GameObject endUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,15 +22,7 @@ public class Tank : MonoBehaviour
         if(other.name == "Player")
         {
             GameInstance.Instance.Player.canMove = false;
-
-            void TaskOnClick()
-            {
-                GameInstance.Instance.LevelManager.NextLevel();
-                Destroy(endUI);
-            }
-            endUI = Instantiate(GameInstance.Instance.UIManager.uis[0], GameObject.Find("Canvas").transform);
-            endUI.GetComponentInChildren<Button>().onClick.AddListener(TaskOnClick);
-            
+            GameInstance.Instance.UIManager.Show("nextlevel");
         }
     }
 }

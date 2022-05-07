@@ -34,4 +34,10 @@ public class GameInstance : MonoBehaviour
     {
         Time.timeScale = 1;
     }
+
+    public void NextLevel()
+    {
+        Instance.LevelManager.NextLevel();
+        Instance.UIManager.Hide();
+    }
 }
