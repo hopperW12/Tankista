@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using AI;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class Player : MonoBehaviour
 {
     public float speed = 10f;
     public bool canMove = true;
 
+
+    private GameObject respawnUI;
     private void Awake()
     {
         GameInstance.Instance.Player = GetComponentInChildren<Player>();
@@ -39,7 +42,16 @@ public class Player : MonoBehaviour
     {
         if (gameObject.name != name) return;
 
+        GameInstance.Instance.PauseGame();
+        respawnUI = Instantiate(GameInstance.Instance.UIManager.uis[1], GameObject.Find("Canvas").transform);
+
         GameInstance.Instance.LevelManager.DestroyLevel();
         GameInstance.Instance.LevelManager.SpawnLevel();
+    }
+
+    public void Respawn()
+    {
+        DestroyImmediate(respawnUI);
+        GameInstance.Instance.ResumeGame();
     }
 }

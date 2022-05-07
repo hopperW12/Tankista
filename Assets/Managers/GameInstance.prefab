@@ -95,7 +95,7 @@ MonoBehaviour:
   - {fileID: 5008222202146598550, guid: 8b8b745ede8a49641b4c7e032020dbbb, type: 3}
   - {fileID: 0}
   levelObj: {fileID: 0}
-  endLevelUI: {fileID: 0}
+  spawnpoint: {fileID: 0}
 --- !u!1 &3496499260854009138
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,6 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uis:
   - {fileID: 394099718898295603, guid: 80e6f1ab5924aee4a91523330f686f0c, type: 3}
+  - {fileID: 2174562582602763000, guid: 876797641f8bb044a9bb9e9ffc8e5f51, type: 3}
 --- !u!1 &6434960621086027734
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,4 +207,4 @@ MonoBehaviour:
   - {fileID: 5304222104421825010, guid: 95355fde9fbdca84d8cc01e02e050902, type: 3}
   - {fileID: 5008222202146598550, guid: 8b8b745ede8a49641b4c7e032020dbbb, type: 3}
   levelObj: {fileID: 0}
-  endLevelUI: {fileID: 0}
+  spawnpoint: {fileID: 0}

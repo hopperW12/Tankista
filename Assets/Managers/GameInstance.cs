@@ -24,4 +24,14 @@ public class GameInstance : MonoBehaviour
         MenuManager = GetComponentInChildren<MenuManager>();
         UIManager = GetComponentInChildren<UIManager>();
     }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+    }
 }
