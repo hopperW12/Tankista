@@ -52,7 +52,7 @@ public class FieldOfView : MonoBehaviour
             else
             {
                 var gameObject = raycast.transform.gameObject;
-                AITrigger.Invoke(gameObject, GetComponentInParent<AIMovement>().soldierInfo);
+                AITrigger.Invoke(gameObject, GetComponentInParent<AIController>().soldierInfo);
                 vertex = origin + GetVectorFromAngle(angle - _startingAngle - 90 - fov / 2) * raycast.distance;
             }
 

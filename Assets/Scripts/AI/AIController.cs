@@ -6,7 +6,7 @@ using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class AIMovement : MonoBehaviour
+public class AIController : MonoBehaviour
 {
     [FormerlySerializedAs("SoldierInfo")]
     [Header("Soldier Info")] 
@@ -32,8 +32,10 @@ public class AIMovement : MonoBehaviour
 
     private void Start()
     {
-        if (points.Count > 1) _activate = true;
-        else return;
+        if (points.Count > 1)
+            _activate = true;
+        else 
+            return;
         
         soldierInfo = SoldierInfo.GetRandomSoldier();
         

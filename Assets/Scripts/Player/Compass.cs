@@ -11,11 +11,6 @@ public class Compass : MonoBehaviour
     public GameObject target;
     public GameObject hand;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         if (!enable)

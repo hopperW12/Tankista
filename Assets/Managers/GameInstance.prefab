@@ -224,3 +224,5 @@ MonoBehaviour:
     ui: {fileID: 2174562582602763000, guid: 876797641f8bb044a9bb9e9ffc8e5f51, type: 3}
   - Name: nextlevel
     ui: {fileID: 394099718898295603, guid: 80e6f1ab5924aee4a91523330f686f0c, type: 3}
+  - Name: player
+    ui: {fileID: 2492357079338696209, guid: ecb4bc303a693f740b23ced8ff987e2d, type: 3}

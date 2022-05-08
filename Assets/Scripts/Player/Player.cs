@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         GameInstance.Instance.Player = GetComponentInChildren<Player>();
+        GameInstance.Instance.UIManager.Show("player");
     }
     void FixedUpdate()
     {
@@ -50,5 +51,6 @@ public class Player : MonoBehaviour
     {
         GameInstance.Instance.UIManager.Hide();
         GameInstance.Instance.ResumeGame();
+        GameInstance.Instance.UIManager.Show("player");
     }
 }

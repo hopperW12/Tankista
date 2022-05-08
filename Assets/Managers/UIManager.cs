@@ -19,6 +19,9 @@ public class UIManager : MonoBehaviour
 
     public void Show(string name)
     {
+        if (_ui != null) 
+            Hide();
+        
         UIInfo uiInfo = uis
             .Where(info => info.Name == name)
             .FirstOrDefault();
