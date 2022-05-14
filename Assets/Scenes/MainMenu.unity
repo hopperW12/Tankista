@@ -799,6 +799,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2562644805896852779, guid: 0d45886aa88a8b144af21693b1ab69c8, type: 3}
+      propertyPath: uis.Array.data[2].ui
+      value: 
+      objectReference: {fileID: 3946695141087688148, guid: 9985805d65297ee47a4d18840a48feaa, type: 3}
     - target: {fileID: 1980887622, guid: 0d45886aa88a8b144af21693b1ab69c8, type: 3}
       propertyPath: levelSelectorObj
       value: 
