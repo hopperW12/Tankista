@@ -34,6 +34,6 @@ public class UIManager : MonoBehaviour
     public void Hide()
     {
         if (_ui != null)
-            DestroyImmediate(_ui);
+            Destroy(_ui);
     }
 }
