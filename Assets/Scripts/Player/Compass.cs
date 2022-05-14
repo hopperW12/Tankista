@@ -17,10 +17,10 @@ public class Compass : MonoBehaviour
             return;
 
 
-        Vector3 handPosition = hand.transform.position;
-        Vector3 target = GameObject.Find("Tank").transform.position;
+        Vector3 playerPosition = GameObject.Find("Player").transform.position;
+        Vector3 targetPosition = GameObject.Find("Tank").transform.position;
 
-        Quaternion requiredRotation = Quaternion.LookRotation(Vector3.forward, new Vector3(target.x, target.y, handPosition.z) - handPosition);
+        Quaternion requiredRotation = Quaternion.LookRotation(Vector3.forward, new Vector3(targetPosition.x, targetPosition.y, playerPosition.z) - playerPosition);
         hand.transform.rotation = Quaternion.RotateTowards(hand.transform.rotation, requiredRotation, compassRotationSpeed * Time.deltaTime);
         
     }
