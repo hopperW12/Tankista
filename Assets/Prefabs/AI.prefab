@@ -197,13 +197,13 @@ MonoBehaviour:
     firstName: 
     lastName: 
     age: 0
-  speed: 10
-  rotationSpeed: 45
+  speed: 8
+  rotationSpeed: 90
   ignoreMask:
     serializedVersion: 2
     m_Bits: 64
   fov: 90
-  viewDistance: 4
+  viewDistance: 6
   fovMaterial: {fileID: 2100000, guid: 0ac080f1a11cd6d43af8ef184c734410, type: 2}
   points:
   - {x: 0, y: 0}

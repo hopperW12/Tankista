@@ -25,21 +25,6 @@ public class LevelSelector : MonoBehaviour
             }
 
             button.GetComponent<Button>().onClick.AddListener(TaskOnClick);
-            //button.GetComponent<Button>().onClick.Invoke();
         }
-    }
-
-    
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void ForLevels()
-    {
-        
     }
 }
