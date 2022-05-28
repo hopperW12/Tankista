@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 2528016672418069897}
   m_Layer: 6
   m_Name: AI
-  m_TagString: Untagged
+  m_TagString: AI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -196,6 +196,8 @@ MonoBehaviour:
   soldierInfo:
     firstName: 
     lastName: 
+    rank: 
+    city: 
     age: 0
   speed: 8
   rotationSpeed: 90

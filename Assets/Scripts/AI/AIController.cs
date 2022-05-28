@@ -8,7 +8,6 @@ using UnityEngine.Serialization;
 
 public class AIController : MonoBehaviour
 {
-    [FormerlySerializedAs("SoldierInfo")]
     [Header("Soldier Info")] 
     public SoldierInfo soldierInfo;
  

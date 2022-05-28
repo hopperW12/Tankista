@@ -39,18 +39,18 @@ public class Player : MonoBehaviour
     public void AITrigger(GameObject gameObject, SoldierInfo soldierInfo)
     {
         if (gameObject.name != name) return;
-
-        GameInstance.Instance.PauseGame();
+        
         GameInstance.Instance.UIManager.Show("respawn");
-
-        GameInstance.Instance.LevelManager.DestroyLevel();
-        GameInstance.Instance.LevelManager.SpawnLevel();
+        GameInstance.Instance.PauseGame();
     }
 
     public void Respawn()
     {
-        GameInstance.Instance.UIManager.Hide();
         GameInstance.Instance.ResumeGame();
+        GameInstance.Instance.LevelManager.DestroyLevel();
+        GameInstance.Instance.LevelManager.SpawnLevel();
+        
+        GameInstance.Instance.UIManager.Hide();
         GameInstance.Instance.UIManager.Show("player");
     }
 }
