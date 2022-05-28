@@ -25,12 +25,13 @@ public class LevelManager : MonoBehaviour
 
     public void SpawnLevel()
     {
-
+        
         levelObj = Instantiate(levels[activeLevel].levelPrefab);
         
         spawnpoint = GameObject.Find("SPAWNPOINT");
         player = GameObject.Find("Player");
         GameInstance.Instance.Player.canMove = true;
+        GameInstance.Instance.Player.isDead = false;
 
         player.transform.position = new Vector3(spawnpoint.transform.position.x, spawnpoint.transform.position.y, player.transform.position.z);
     }

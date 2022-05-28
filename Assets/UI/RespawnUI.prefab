@@ -144,7 +144,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4513328348815053229}
   - component: {fileID: 811785944240010137}
-  - component: {fileID: 4764208017273627428}
   m_Layer: 5
   m_Name: RespawnUI
   m_TagString: Untagged
@@ -168,10 +167,10 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.012024, y: 0}
-  m_SizeDelta: {x: 1366, y: 539}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.012023926, y: 0}
+  m_SizeDelta: {x: 0, y: -37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &811785944240010137
 CanvasRenderer:
@@ -181,36 +180,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2174562582602763000}
   m_CullTransparentMesh: 1
---- !u!114 &4764208017273627428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2174562582602763000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
-  m_Color: {r: 0.3372549, g: 0.3372549, b: 0.3372549, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &2413356710433397918
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,10 +215,10 @@ RectTransform:
   m_Father: {fileID: 4513328348815053229}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 465, y: 0}
-  m_SizeDelta: {x: -1070, y: -60.000008}
+  m_AnchoredPosition: {x: -218, y: -270}
+  m_SizeDelta: {x: 296, y: 480}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &948809887448522823
 CanvasRenderer:

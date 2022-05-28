@@ -1,4 +1,4 @@
-﻿using System;
+﻿using UnityEngine;
 
 namespace AI
 {
@@ -11,22 +11,21 @@ namespace AI
 
         public static string GetRandomFirstName()
         {
-            return firstNames[new Random().Next(0, firstNames.Length)];
+            return firstNames[Random.Range(0, firstNames.Length)];
         }
         public static string GetRandomLastName()
         {
-            return lastNames[new Random().Next(0, lastNames.Length)];
+            return lastNames[Random.Range(0, lastNames.Length)];
         }
         public static string GetRandomRank()
         {
-            return ranks[new Random().Next(0, ranks.Length)];
+            return ranks[Random.Range(0, ranks.Length)];
         }
         public static string GetRandomCity()
         {
-            return cities[new Random().Next(0, cities.Length)];
+            return cities[Random.Range(0, cities.Length)];
         }
     }
-    [Serializable]
     public struct SoldierInfo
     {
 
@@ -45,7 +44,7 @@ namespace AI
                 lastName =  SoldierDatabase.GetRandomLastName(),
                 city = SoldierDatabase.GetRandomCity(),
                 rank = SoldierDatabase.GetRandomRank(),
-                age = new Random().Next(18, 50)
+                age = Random.Range(18, 50)
                 
             };
         }

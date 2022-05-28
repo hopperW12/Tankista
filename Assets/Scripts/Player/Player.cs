@@ -6,6 +6,7 @@ using UnityEngine.SocialPlatforms;
 
 public class Player : MonoBehaviour
 {
+    public bool isDead = false;
     public float speed = 10f;
     public bool canMove = true;
     private void Awake()
@@ -39,7 +40,9 @@ public class Player : MonoBehaviour
     public void AITrigger(GameObject gameObject, SoldierInfo soldierInfo)
     {
         if (gameObject.name != name) return;
-        
+        if (isDead) return;
+
+        isDead = true;
         GameInstance.Instance.UIManager.Show("respawn");
         GameInstance.Instance.PauseGame();
     }
@@ -49,7 +52,7 @@ public class Player : MonoBehaviour
         GameInstance.Instance.ResumeGame();
         GameInstance.Instance.LevelManager.DestroyLevel();
         GameInstance.Instance.LevelManager.SpawnLevel();
-        
+
         GameInstance.Instance.UIManager.Hide();
         GameInstance.Instance.UIManager.Show("player");
     }
