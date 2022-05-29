@@ -334,7 +334,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2087491762787864030, guid: 0d45886aa88a8b144af21693b1ab69c8, type: 3}
+      - m_Target: {fileID: 2087491762787864030, guid: ccdc8a82f84ab53488b94b8df215f24c, type: 3}
         m_TargetAssemblyTypeName: GameInstance, Assembly-CSharp
         m_MethodName: NextLevel
         m_Mode: 1

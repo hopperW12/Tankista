@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b471ba50860df409f87429ab3d9aec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelSelectorObj: {fileID: 0}
+  levelSelectorObj: {fileID: 5217019027835358225, guid: b67bf4800546db3458cc595d3c293e0d, type: 3}
 --- !u!1 &3380107171135711402
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,11 +89,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeLevel: 0
   levels:
-  - {fileID: 0}
-  - {fileID: 1069023041971549545, guid: b04b8c3d5500a5f418f893d172fbf2b3, type: 3}
-  - {fileID: 5304222104421825010, guid: 95355fde9fbdca84d8cc01e02e050902, type: 3}
-  - {fileID: 5008222202146598550, guid: 8b8b745ede8a49641b4c7e032020dbbb, type: 3}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 2d1d5a5e29e6e884990f7ac0a9f5e16d, type: 2}
+  - {fileID: 11400000, guid: 859eb1ff2971602478878b731ea75732, type: 2}
+  - {fileID: 11400000, guid: 7df633ca023413b43a3046f5ca062c47, type: 2}
   levelObj: {fileID: 0}
   spawnpoint: {fileID: 0}
 --- !u!1 &3496499260854009138
@@ -139,7 +137,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 121e71f13aa6ff94899b481c51657ea0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uis: []
+  uis:
+  - Name: respawn
+    ui: {fileID: 2174562582602763000, guid: 876797641f8bb044a9bb9e9ffc8e5f51, type: 3}
+  - Name: nextlevel
+    ui: {fileID: 394099718898295603, guid: 80e6f1ab5924aee4a91523330f686f0c, type: 3}
+  - Name: player
+    ui: {fileID: 3946695141087688148, guid: 9985805d65297ee47a4d18840a48feaa, type: 3}
 --- !u!1 &6434960621086027734
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,8 +154,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1550117727556633196}
   - component: {fileID: 2087491762787864030}
-  - component: {fileID: 1258796823}
-  - component: {fileID: -2562644805896852779}
   m_Layer: 0
   m_Name: GameInstance
   m_TagString: Untagged
@@ -188,41 +190,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb39a4af33afc1e41875faed49dd37d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1258796823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6434960621086027734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4b6827b8f0bd214cb5b6fa5b4cb308d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeLevel: 0
-  levels:
-  - {fileID: 1069023041971549545, guid: b04b8c3d5500a5f418f893d172fbf2b3, type: 3}
-  - {fileID: 5304222104421825010, guid: 95355fde9fbdca84d8cc01e02e050902, type: 3}
-  - {fileID: 5008222202146598550, guid: 8b8b745ede8a49641b4c7e032020dbbb, type: 3}
-  levelObj: {fileID: 0}
-  spawnpoint: {fileID: 0}
---- !u!114 &-2562644805896852779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6434960621086027734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 121e71f13aa6ff94899b481c51657ea0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uis:
-  - Name: respawn
-    ui: {fileID: 2174562582602763000, guid: 876797641f8bb044a9bb9e9ffc8e5f51, type: 3}
-  - Name: nextlevel
-    ui: {fileID: 394099718898295603, guid: 80e6f1ab5924aee4a91523330f686f0c, type: 3}
-  - Name: player
-    ui: {fileID: 2492357079338696209, guid: ecb4bc303a693f740b23ced8ff987e2d, type: 3}
