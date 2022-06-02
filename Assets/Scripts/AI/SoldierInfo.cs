@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 
 namespace AI
-{
+{   
+    //Databaze 
     public class SoldierDatabase
     {
         private static string[] firstNames = new string[]{"Karel", "Dan", "Martin", "Tomas", "Vojta", "Šimon"};
@@ -9,6 +10,7 @@ namespace AI
         private static string[] ranks = new[] {"Vojín", "Desátník", "Četař", "Rotný", "Praporčík", "Kapitán", "Major", "Plukovník"};
         private static string[] cities = new[] {"Moskva", "Petrohrad", "Abakan", "Orsk", "Praha", "Berlin", "Brno", "Hulín", "Žopy" , "Pravčice", "Holešov", "Zlín", "Kroměříž", "Prusenovice"};
 
+        //Generovani jmen, ranku, měst
         public static string GetRandomFirstName()
         {
             return firstNames[Random.Range(0, firstNames.Length)];
@@ -32,11 +34,7 @@ namespace AI
         public string firstName, lastName, rank, city;
         public int age;
         
-        public override string ToString()
-        {
-            return $"{firstName} {lastName}, {age}";
-        }
-
+        //Vytvoreni nahodneho vojaka
         public static SoldierInfo GetRandomSoldier()
         {
             return new SoldierInfo() {

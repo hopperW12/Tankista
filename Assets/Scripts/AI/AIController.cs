@@ -1,13 +1,10 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using AI;
-using Unity.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class AIController : MonoBehaviour
 {
+    //Zakladni nastaveni AI v editoru
     [Header("Soldier Info")] 
     public SoldierInfo soldierInfo;
  
@@ -28,17 +25,19 @@ public class AIController : MonoBehaviour
     private ActionStatus status;
     private bool _activate;
 
-
-    private void Start()
+    //Funkce se vola pri vytvoreni AI
+    private void Start() 
     {
+        //Pokud neni nastavena cesta tak zůstan na mistě
         if (points.Count > 1)
             _activate = true;
         else 
             return;
         
+        //Vygenerovani informaci o AI
         soldierInfo = SoldierInfo.GetRandomSoldier();
         
-        //Default start
+        //Nastaveni dalsi pozice a směru divani
         _nextPosition++;
         Vector2 nextPosition = points[_nextPosition];
 
@@ -47,38 +46,43 @@ public class AIController : MonoBehaviour
         transform.up = direction;
         status = ActionStatus.MOVE;
         
-        //Field Of View
+        //Vytvoreni Field Of View
         GameObject fov = new GameObject("FieldOfView");
+        //Pridani a nastaveni komponentů
         fov.AddComponent<MeshFilter>();
         fov.AddComponent<MeshRenderer>();
         fov.AddComponent<FieldOfView>();
         
         fov.GetComponent<MeshRenderer>().material = fovMaterial;
         
+        //Nastaveni Field Of View  
         FieldOfView fieldOfView = fov.GetComponent<FieldOfView>();
         fieldOfView.AITrigger.AddListener(GameInstance.Instance.Player.AITrigger);
         fieldOfView.ignore = ignoreMask;
         fieldOfView.fov = this.fov;
         fieldOfView.viewDistance = this.viewDistance;
         
+        //Pridani Field Of View na AI
         fov.transform.SetParent(transform, false);
     }
     
-
+    //Funkce se kona pri každem vykreslenem snimku
     void Update()
     {
         if (!_activate)
             return;
 
-        //Movement & Rotation    
+        //Nastaveni dalsi pozice   
         Vector2 nextPosition = points[_nextPosition];    
 
         switch(status) {
+            //Pohyb v pred
             case ActionStatus.MOVE:
                 float step = Time.deltaTime * speed;
                 transform.position = new Vector3(Vector2.MoveTowards(transform.position, nextPosition, step).x,
                 Vector2.MoveTowards(transform.position, nextPosition, step).y, transform.position.z);
 
+                //Pokud dosahl bodu tak se zacne otacet za dalsim
                 if (Vector2.Distance(transform.position, nextPosition) < 0.001f) {
                      _nextPosition++;
                     if (_nextPosition == points.Count)
@@ -87,11 +91,15 @@ public class AIController : MonoBehaviour
                     status = ActionStatus.ROTATION;
                 }
                 break;
+            //Otaceni se za urcitym bodem
             case ActionStatus.ROTATION:
+
+                //Otaceni se za dalsim bodem
                 Vector3 direction = new Vector3(nextPosition.x, nextPosition.y, transform.position.z) - transform.position;
                 Quaternion requiredRotation = Quaternion.LookRotation(Vector3.forward, new Vector3(nextPosition.x, nextPosition.y, transform.position.z) - transform.position);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, requiredRotation, rotationSpeed * Time.deltaTime);
 
+                //Pokud je ve spravne rotaci prepni se na chozeni
                 if (requiredRotation == transform.rotation)
                     status = ActionStatus.MOVE;
                 break;
@@ -99,8 +107,6 @@ public class AIController : MonoBehaviour
     }
        
 }
-
-
 
 public enum ActionStatus {
     MOVE,
