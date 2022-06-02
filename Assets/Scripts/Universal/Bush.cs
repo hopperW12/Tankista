@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bush : MonoBehaviour
 {
+    //Pokud je kolidovaný objekt hráè
+    //Použití knihovny LeanTween pro plynulý pøechod
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.name == "Player")
@@ -12,8 +14,11 @@ public class Bush : MonoBehaviour
         }
     }
 
+    //Pokud je kolidovaný objekt hráè
+    //Použití knihovny LeanTween pro plynulý pøechod
     private void OnTriggerExit2D(Collider2D other)
     {
+
         if(other.name == "Player")
         {
             LeanTween.alpha(this.gameObject, 1f, 0.5f);
