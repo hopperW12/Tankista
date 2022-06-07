@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,22 +13,22 @@ public class LevelSelector : MonoBehaviour
 
     void Start()
     {
-        //For pøeète kadı level a vytvoøí pro nìj tlaèítko na start
+        //For pÅ™eÄte kaÅ¾dÃ½ level a vytvoÅ™Ã­ pro nÄ›j tlaÄÃ­tko na start
         foreach (Level level in GameInstance.Instance.LevelManager.levels)
         {
-            //Spawnutí pøedem nadefinovaného tlaèítka
+            //SpawnutÃ­ pÅ™edem nadefinovanÃ©ho tlaÄÃ­tka
             GameObject button = Instantiate(levelButtonObj, gameObject.transform);
-            //Nastavení textu tlaèítka na èíslo levelu
+            //NastavenÃ­ textu tlaÄÃ­tka na ÄÃ­slo levelu
             button.GetComponentInChildren<TextMeshProUGUI>().text = level.name;
 
-            //Vytvoøení funkce pro tlaèítko po kliknutí
+            //VytvoÅ™enÃ­ funkce pro tlaÄÃ­tko po kliknutÃ­
             void TaskOnClick()
             {
                 GameInstance.Instance.LevelManager.activeLevel = int.Parse(level.name) - 1;
                 SceneManager.LoadScene("Game");
             }
 
-            //Pøidání funkce TaskOnClick() na tlaèítko
+            //PÅ™idÃ¡nÃ­ funkce TaskOnClick() na tlaÄÃ­tko
             button.GetComponent<Button>().onClick.AddListener(TaskOnClick);
         }
     }

@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    //Vytvoøení promìnnıch pro UI tlaèítka a level selector
+    //VytvoÅ™enÃ­ promÄ›nnÃ½ch pro UI tlaÄÃ­tka a level selector
     private GameObject playB;
     private GameObject exitB;
     private GameObject backB;
@@ -13,7 +11,7 @@ public class MenuManager : MonoBehaviour
     public GameObject levelSelectorObj;
     private void Start()
     {
-        //Pøi startu se podle jména nastaví promìnné na správná tlaèítka
+        //PÅ™i startu se podle jmÃ©na nastavÃ­ promÄ›nnÃ© na sprÃ¡vnÃ¡ tlaÄÃ­tka
         playB = GameObject.Find("Play");
         exitB = GameObject.Find("Exit");
         backB = GameObject.Find("Back");
@@ -27,11 +25,11 @@ public class MenuManager : MonoBehaviour
 
     public void PlayButton()
     {
-        //Pøi zmáèknutí tlaèítka "Play" se pomocí funkce SetActive() zneviditelní a zviditelní tlaèítka podle potøeby
+        //PÅ™i zmÃ¡ÄknutÃ­ tlaÄÃ­tka "Play" se pomocÃ­ funkce SetActive() zneviditelnÃ­ a zviditelnÃ­ tlaÄÃ­tka podle potÅ™eby
         playB.SetActive(false);
         exitB.SetActive(false);
         backB.SetActive(true);
-        //Vytvoøení level selectoru v "Canvasu"
+        //VytvoÅ™enÃ­ level selectoru v "Canvasu"
         levelSelector = Instantiate(levelSelectorObj, GameObject.Find("Canvas").transform);
     }
 
@@ -41,15 +39,15 @@ public class MenuManager : MonoBehaviour
         playB.SetActive(true);
         exitB.SetActive(true);
         backB.SetActive(false);
-        //Pøi návratu do menu se level selector znièí, aby nepøekrıval samotné menu
+        //PÅ™i nÃ¡vratu do menu se level selector zniÄÃ­, aby nepÅ™ekrÃ½val samotnÃ© menu
         Destroy(levelSelector);
     }
 
     public void LoadLevel(int levelIndex)
     {
-        //Nastavení èísla levelu, kterı se má spawnout
+        //NastavenÃ­ ÄÃ­sla levelu, kterÃ½ se mÃ¡ spawnout
         GameInstance.Instance.LevelManager.activeLevel = levelIndex;
-        //Naètení herní scény "Game"
+        //NaÄtenÃ­ hernÃ­ scÃ©ny "Game"
         SceneManager.LoadScene("Game");
     }
 }

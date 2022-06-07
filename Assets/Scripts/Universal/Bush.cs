@@ -1,11 +1,11 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Bush : MonoBehaviour
 {
-    //Pokud je kolidovanı objekt hráè
-    //Pouití knihovny LeanTween pro plynulı pøechod
+    //Pokud je kolidovanÃ½ objekt hrÃ¡Ä
+    //PouÅ¾itÃ­ knihovny LeanTween pro plynulÃ½ pÅ™echod
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.name == "Player")
@@ -14,8 +14,8 @@ public class Bush : MonoBehaviour
         }
     }
 
-    //Pokud je kolidovanı objekt hráè
-    //Pouití knihovny LeanTween pro plynulı pøechod
+    //Pokud je kolidovanÃ½ objekt hrÃ¡Ä
+    //PouÅ¾itÃ­ knihovny LeanTween pro plynulÃ½ pÅ™echod
     private void OnTriggerExit2D(Collider2D other)
     {
 

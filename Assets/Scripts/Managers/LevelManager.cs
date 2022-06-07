@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -20,31 +20,31 @@ public class LevelManager : MonoBehaviour
 
     public void SpawnLevel()
     {
-        //Vytvoøení celého levelu
-        //[activeLevel] se zamìní za èíslici levelu, kterı je vybrán v menu
+        //VytvoÅ™enÃ­ celÃ©ho levelu
+        //[activeLevel] se zamÄ›nÃ­ za ÄÃ­slici levelu, kterÃ½ je vybrÃ¡n v menu
         levelObj = Instantiate(levels[activeLevel].levelPrefab);
         
-        //Script uloí hráèe a samotnı spawnpoint do promìnné
+        //Script uloÅ¾Ã­ hrÃ¡Äe a samotnÃ½ spawnpoint do promÄ›nnÃ©
         spawnpoint = GameObject.Find("SPAWNPOINT");
         player = GameObject.Find("Player");
         GameInstance.Instance.Player.canMove = true;
         GameInstance.Instance.Player.isDead = false;
 
-        //Hráèova pozice se ještì pøed zaèátkem hry nastaví na spawnpoint, kterı je ji pøedem umístìnı v kadém levelu
+        //HrÃ¡Äova pozice se jeÅ¡tÄ› pÅ™ed zaÄÃ¡tkem hry nastavÃ­ na spawnpoint, kterÃ½ je jiÅ¾ pÅ™edem umÃ­stÄ›nÃ½ v kaÅ¾dÃ©m levelu
         player.transform.position = new Vector3(spawnpoint.transform.position.x, spawnpoint.transform.position.y, player.transform.position.z);
     }
 
-    //Level se znièí
-    //Normálnì by byla pouita funkce Destroy(levelObj)
-    //Jeliko potøebujeme objekt znièit hned po vyvolání funkce, je zde pouita funkce DestroyImmediate()
+    //Level se zniÄÃ­
+    //NormÃ¡lnÄ› by byla pouÅ¾ita funkce Destroy(levelObj)
+    //JelikoÅ¾ potÅ™ebujeme objekt zniÄit hned po vyvolÃ¡nÃ­ funkce, je zde pouÅ¾ita funkce DestroyImmediate()
     public void DestroyLevel()
     {
         DestroyImmediate(levelObj);
     }
 
-    //Pøi dokonèení levelu se hráèi k promìnné ve které se ukládá level pøiète jedno èíslo
-    //Starı level se odstraní a jeliko se k promìnné pøièetlo jedno èíslo, spawne se level novı
-    //Nakonec se odstraní UI
+    //PÅ™i dokonÄenÃ­ levelu se hrÃ¡Äi k promÄ›nnÃ© ve kterÃ© se uklÃ¡dÃ¡ level pÅ™iÄte jedno ÄÃ­slo
+    //StarÃ½ level se odstranÃ­ a jelikoÅ¾ se k promÄ›nnÃ© pÅ™iÄetlo jedno ÄÃ­slo, spawne se level novÃ½
+    //Nakonec se odstranÃ­ UI
     public void NextLevel()
     {
         activeLevel++;

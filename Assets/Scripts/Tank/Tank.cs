@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,15 +17,15 @@ public class Tank : MonoBehaviour
         
     }
 
-    //Funkce OnTriggerEnter2D se vyvolá kdy s nìèím bude objekt, kterı má na sobì tento script kolidovat
+    //Funkce OnTriggerEnter2D se vyvolÃ¡ kdyÅ¾ s nÄ›ÄÃ­m bude objekt, kterÃ½ mÃ¡ na sobÄ› tento script kolidovat
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //Pokud je kolidovanı objekt hráè, vyvolá se UI pro konec levelu
+        //Pokud je kolidovanÃ½ objekt hrÃ¡Ä, vyvolÃ¡ se UI pro konec levelu
         if(other.name == "Player")
         {
-            //Zamezení pohybu hráèi
+            //ZamezenÃ­ pohybu hrÃ¡Äi
             GameInstance.Instance.Player.canMove = false;
-            //Zavolání na vlastní funkci Show
+            //ZavolÃ¡nÃ­ na vlastnÃ­ funkci Show
             GameInstance.Instance.UIManager.Show("nextlevel");
         }
     }

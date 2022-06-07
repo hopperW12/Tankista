@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +9,10 @@ public class GameInstance : MonoBehaviour
     public LevelManager LevelManager { get; private set; }
     public MenuManager MenuManager { get; private set; }
     public UIManager UIManager { get; private set; }
+
+    // Singleton
+    // Objekt který má na sobě skript GameInstance se nikdy nebude nacházet vícekrát ve scéně
+    // Pokud už objekt je ve scéně a další se chce spawnout, tak ho to ihned zničí
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -25,16 +29,19 @@ public class GameInstance : MonoBehaviour
         UIManager = GetComponentInChildren<UIManager>();
     }
 
+    // Funkce na pauznutí hry
     public void PauseGame()
     {
         Time.timeScale = 0;
     }
 
+    // Funkce na obnovení hry
     public void ResumeGame()
     {
         Time.timeScale = 1;
     }
 
+    // Funkce na spawnutí dalšího levelu
     public void NextLevel()
     {
         Instance.LevelManager.NextLevel();
