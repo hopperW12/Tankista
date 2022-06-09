@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -16,7 +11,6 @@ public class LevelManager : MonoBehaviour
     public GameObject spawnpoint;
     private GameObject tank;
     private GameObject player;
-    private GameObject endLevelUIobj;
 
     public void SpawnLevel()
     {
@@ -44,12 +38,12 @@ public class LevelManager : MonoBehaviour
 
     //Při dokončení levelu se hráči k proměnné ve které se ukládá level přičte jedno číslo
     //Starý level se odstraní a jelikož se k proměnné přičetlo jedno číslo, spawne se level nový
-    //Nakonec se odstraní UI
+    //Přepnutí UI na hráčské
     public void NextLevel()
     {
         activeLevel++;
         DestroyLevel();
         SpawnLevel();
-        Destroy(endLevelUIobj);
+        GameInstance.Instance.UIManager.Show("player");
     }
 }
