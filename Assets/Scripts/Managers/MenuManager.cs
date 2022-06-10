@@ -35,7 +35,6 @@ public class MenuManager : MonoBehaviour
 
     public void BackButton()
     {
-        //30
         playB.SetActive(true);
         exitB.SetActive(true);
         backB.SetActive(false);

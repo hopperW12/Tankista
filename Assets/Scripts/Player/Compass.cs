@@ -5,8 +5,7 @@ public class Compass : MonoBehaviour
 
     public bool enable = true;
     public float compassRotationSpeed = 100f;
-
-    public GameObject target;
+    
     public GameObject hand;
 
     void Update()

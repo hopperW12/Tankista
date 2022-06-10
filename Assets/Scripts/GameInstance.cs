@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿/*
+Program:    Tankista
+Jméno:      Daniel Kuchař a Tomáš Pecka
+Třída:      3.B
+Zpracování: 8.3 - 10.6
+*/
+
+using UnityEngine;
 
 public class GameInstance : MonoBehaviour
 {
